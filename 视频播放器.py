@@ -19,16 +19,20 @@ class VideoPlayerApp:
     def __init__(self, width=500, height=300):
         self.w = width
         self.h = height
-        self.title = '视频播放器1.0'
+        self.title = '视频破解播放器plus——————2024-2-28-Made-By-中北锋哥'
         self.root = tk.Tk(className=self.title)
         self.url = tk.StringVar()
         self.v = tk.IntVar()
         self.v.set(1)
         self.port = 'https://jx.jsonplayer.com/player/?url='
-        self.port2 = 'https://jx.xyflv.cc/?url='  # 新增第二个通道
+        self.port2 = 'https://jx.xyflv.cc/?url='
         self.port3 = 'https://jx.qqwtt.com/?url='
         self.port4 = 'https://jx.2s0.cn/player/?url='
         self.port5 = 'https://jx.playerjy.com/?url='
+        self.port6 = 'https://im1907.top/?jx='
+        self.port7 = 'https://yparse.jn1.cc/index.php?url='
+        self.port8 = 'https://jx.m3u8.tv/jiexi/?url='
+        self.port9 = 'https://2.08bk.com/?url='
         self.ip = ''
         self.download_directory = ''
         self.cancel_flag = False  # Flag to indicate if the download should be canceled
@@ -49,7 +53,7 @@ class VideoPlayerApp:
         rename_frame.pack(pady=10)
 
         # Group Label
-        group_label = tk.Label(frame_1, text='多通道：')
+        group_label = tk.Label(frame_1, text='多通道解析选择：')
         group_label.grid(row=0, column=0, padx=10, pady=10)
 
         # Radiobutton
@@ -67,6 +71,19 @@ class VideoPlayerApp:
 
         tb5 = tk.Radiobutton(frame_1, text='通道 5', variable=self.v, value=5)
         tb5.grid(row=0, column=5, padx=5)
+
+        tb6 = tk.Radiobutton(frame_1, text='通道 6', variable=self.v, value=6)
+        tb6.grid(row=1, column=1, padx=5)
+
+        tb7 = tk.Radiobutton(frame_1, text='通道 7', variable=self.v, value=7)
+        tb7.grid(row=1, column=2, padx=5)
+
+        tb8 = tk.Radiobutton(frame_1, text='通道 8', variable=self.v, value=8)
+        tb8.grid(row=1, column=3, padx=5)
+
+        tb9 = tk.Radiobutton(frame_1, text='通道 9', variable=self.v, value=9)
+        tb9.grid(row=1, column=4, padx=5)
+
         # Input Label and Entry
         label = tk.Label(frame_2, text='请输入视频链接：')
         entry = tk.Entry(frame_2, textvariable=self.url, highlightcolor='Fuchsia', highlightthickness=1, width=40)
@@ -79,15 +96,16 @@ class VideoPlayerApp:
         play.grid(row=0, column=2, padx=(10, 0))
 
         # Download Buttons and Progress Bar
-        download_button = tk.Button(download_frame, text='下载(只支持b站和通道1)', font=('楷体', 12), fg='Green', width=25,
+        download_button = tk.Button(download_frame, text='下载(只支持部分)', font=('楷体', 12), fg='Green',
+                                    width=16,
                                     height=1,
                                     command=self.download_video)
-        clear_button = tk.Button(download_frame, text='清空输入', font=('楷体', 12), fg='Red', width=10, height=1,
+        clear_button = tk.Button(download_frame, text='清空输入', font=('楷体', 12), fg='Red', width=11, height=1,
                                  command=self.clear_input)
-        choose_dir_button = tk.Button(download_frame, text='选择下载目录', font=('楷体', 12), fg='Blue', width=15,
+        choose_dir_button = tk.Button(download_frame, text='选择下载目录', font=('楷体', 12), fg='Blue', width=13,
                                       height=1,
                                       command=self.choose_download_directory)
-        cancel_button = tk.Button(download_frame, text='取消下载', font=('楷体', 12), fg='Red', width=15, height=1,
+        cancel_button = tk.Button(download_frame, text='取消下载', font=('楷体', 12), fg='Red', width=11, height=1,
                                   command=self.cancel_download)
 
         download_button.grid(row=0, column=0, padx=(10, 0))
@@ -137,6 +155,15 @@ class VideoPlayerApp:
                 webbrowser.open(self.port4 + self.ip)
             elif self.v.get() == 5:
                 webbrowser.open(self.port5 + self.ip)
+            elif self.v.get() == 6:
+                webbrowser.open(self.port6 + self.ip)
+            elif self.v.get() == 7:
+                webbrowser.open(self.port7 + self.ip)
+            elif self.v.get() == 8:
+                webbrowser.open(self.port8 + self.ip)
+            elif self.v.get() == 9:
+                webbrowser.open(self.port9 + self.ip)
+
         else:
             msgbox.showerror(title='错误', message='视频链接地址无效，请重新输入！')
 
